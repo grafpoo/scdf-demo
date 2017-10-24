@@ -5,3 +5,19 @@ Demo for Spring Cloud Data Flow - creates a Spring Task, serves it from static w
 - Uses PivotalMySQLWeb to set up MySQL - see https://github.com/pivotal-cf/PivotalMySQLWeb
 
 1. create MySQL db service, e.g. "logdb"
+2. load PivotalMySQLWeb 
+3. *cf push* PivotalMySQLWeb, e.g.
+```
+---
+applications:
+- name: mysqlweb
+  memory: 1024M
+  instances: 1
+  random-route: true
+  path: ./target/PivotalMySQLWeb-0.0.1-SNAPSHOT.jar
+  services:
+    - logdb
+  env:
+    JAVA_OPTS: -Djava.security.egd=file:///dev/urando
+    SPRING_PROFILES_ACTIVE: cloud
+```
