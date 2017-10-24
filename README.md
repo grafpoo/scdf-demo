@@ -21,3 +21,12 @@ applications:
     JAVA_OPTS: -Djava.security.egd=file:///dev/urando
     SPRING_PROFILES_ACTIVE: cloud
 ```
+
+4. Browse to PivotalMySQLWeb app - click **SQL Worksheet**, and run this sql
+```sql
+create table names (name varchar(255));
+```
+followed by
+```sql
+create table emans (name varchar(255), eman varchar(255));
+```
