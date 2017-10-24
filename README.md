@@ -3,3 +3,5 @@ Demo for Spring Cloud Data Flow - creates a Spring Task, serves it from static w
 
 - Uses MySQL tike in PCF for database(s)
 - Uses PivotalMySQLWeb to set up MySQL - see https://github.com/pivotal-cf/PivotalMySQLWeb
+
+1. create MySQL db service, e.g. "logdb"
