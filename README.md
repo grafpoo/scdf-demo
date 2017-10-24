@@ -30,3 +30,31 @@ followed by
 ```sql
 create table emans (name varchar(255), eman varchar(255));
 ```
+
+5. Build the task
+```
+mvn clean package
+```
+
+6. Copy the created jar file to a new directory, and create a manifest there:
+```yml
+---
+applications:
+- name: demotask
+  memory: 1024M
+  instances: 1
+  random-route: true
+  path: ./repo/demo-task-0.0.1-SNAPSHOT.jar
+  services:
+    - mysql
+  env:
+    JAVA_OPTS: -Djava.security.egd=file:///dev/urando
+    SPRING_PROFILES_ACTIVE: cloud
+```
+
+You're going to install a static website from which SCDF task can pull the task jar
+```
+mkdir repo
+cp ~/.m2/repository/demo/task/demo-task/0.0.1-SNAPSHOT/demo-task-0.0.1-SNAPSHOT.jar repo
+cf push -f manifest-task.yml
+```
